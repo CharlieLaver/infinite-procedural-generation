@@ -10,11 +10,14 @@ public class npc : MonoBehaviour {
     protected void move(Transform target, float howClose, float speed, bool shouldAttack = false) {
         float distToTarget = Vector3.Distance(transform.position, target.position);
         float distToPos = Vector3.Distance(this.pos, transform.position);
-        if(distToPos < 5) {
-            randomPos();
-        }
         if(distToTarget <= howClose && shouldAttack) {
-            this.pos = target.position;
+            if(distToPos < 5) {
+                this.pos = transform.position;
+            } else {
+                this.pos = target.position;
+            }
+        } else if(distToPos < 5) {
+            randomPos();
         }
         transform.LookAt(this.pos);
         transform.position = Vector3.MoveTowards(transform.position, this.pos, speed * Time.deltaTime);

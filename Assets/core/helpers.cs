@@ -8,7 +8,6 @@ class helpers : MonoBehaviour {
     public static string[] filterMetaFiles(string[] files) {
         List<string> filteredFiles = new List<string>();
         for(int i = 0; i < files.Length; i++) {
-            Debug.Log(Path.GetExtension(files[i]));
             if(Path.GetExtension(files[i]) != ".meta") {
                 filteredFiles.Add(files[i]);
             }
