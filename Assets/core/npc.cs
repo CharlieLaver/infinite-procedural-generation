@@ -4,20 +4,20 @@ using UnityEngine;
 using System.IO;
 
 public class npc : MonoBehaviour {
-    
-    private Vector3 pos;
 
-    protected void move(Transform target, float howClose, float speed) {
-        float distToTarget = Vector3.Distance(transform.position, transform.position);
+    protected Vector3 pos; 
+
+    protected void move(Transform target, float howClose, float speed, bool shouldAttack = false) {
+        float distToTarget = Vector3.Distance(transform.position, target.position);
         float distToPos = Vector3.Distance(this.pos, transform.position);
         if(distToPos < 5) {
             randomPos();
         }
-        if(distToTarget <= howClose) {
+        if(distToTarget <= howClose && shouldAttack) {
             this.pos = target.position;
         }
         transform.LookAt(this.pos);
-        transform.position = Vector3.MoveTowards(transform.position, this.pos, speed * Time.deltaTime); 
+        transform.position = Vector3.MoveTowards(transform.position, this.pos, speed * Time.deltaTime);
     }   
 
     protected void randomPos() {
@@ -42,21 +42,24 @@ public class npc : MonoBehaviour {
         return health;
     }
 
-    protected void die(int dropAmount, GameObject itemToDrop) {
+    protected void die(int dropAmount, string npcType) {
         Destroy(gameObject);
+        string[] gameObjResources = helpers.filterMetaFiles(Directory.GetFiles(Application.dataPath + "/Resources/npc/" + npcType + "/gameObjects"));
+        string randomGameObj = Path.GetFileNameWithoutExtension(gameObjResources[Random.Range(0, gameObjResources.Length)]);
+        GameObject itemToDrop = Resources.Load<GameObject>("npc/" + npcType + "/gameObjects/" + randomGameObj);
         for (int i = 0; i < dropAmount; i++) {
             Instantiate(itemToDrop, transform.position, transform.rotation);
         }
     }
 
 	protected void selectCharacteristics(string npcType) {
-		string[] meshResources = Directory.GetFiles(Application.dataPath + "/Resources/npc/" + npcType + "/meshes");
-		string randomMesh = Path.GetFileName(meshResources[Random.Range(0, meshResources.Length)]);
+		string[] meshResources = helpers.filterMetaFiles(Directory.GetFiles(Application.dataPath + "/Resources/npc/" + npcType + "/meshes"));
+		string randomMesh = Path.GetFileNameWithoutExtension(meshResources[Random.Range(0, meshResources.Length)]);
 		Mesh selectedMesh = Resources.Load<Mesh>("npc/" + npcType + "/meshes/" + randomMesh);
 		gameObject.GetComponent<MeshFilter>().mesh = selectedMesh;
         gameObject.GetComponent<MeshCollider>().sharedMesh = selectedMesh;
-		string[] matResources = Directory.GetFiles(Application.dataPath + "/Resources/npc" + npcType + "/materials");
-		string randomMat = Path.GetFileName(matResources[Random.Range(0, matResources.Length)]);
+		string[] matResources = helpers.filterMetaFiles(Directory.GetFiles(Application.dataPath + "/Resources/npc/" + npcType + "/materials"));
+		string randomMat = Path.GetFileNameWithoutExtension(matResources[Random.Range(0, matResources.Length)]);
 		Material selectedMat = Resources.Load<Material>("npc/" + npcType + "/materials/" + randomMat);
 		gameObject.GetComponent<Renderer>().material = selectedMat;
 	}
