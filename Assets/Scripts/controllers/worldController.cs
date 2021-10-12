@@ -21,11 +21,14 @@ public class worldController : MonoBehaviour
     bool loadSceneOnStart = true;
     GameObject[] blocks = new GameObject[20];
     Vector3 startPos;
+    zones testZone = new zones();
 
     void Start()
     {
         startPos = player.transform.position;
         selectZone();
+        testZone.getAllZones();
+        testZone.randomZone();
     }
 
     void Update()
