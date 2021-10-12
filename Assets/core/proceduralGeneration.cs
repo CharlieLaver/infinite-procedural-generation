@@ -15,10 +15,11 @@ class proceduralGeneration : MonoBehaviour {
     private int worldSizeZ = 40;
     private int noiseHeight = 4;
 
-	public proceduralGeneration() {
+	protected void proceduralGenerationInit() {
 		player = GameObject.FindGameObjectWithTag("Player");
 		startPos = player.transform.position;
 		this.zoneService.getAllZones();
+		this.zoneService.randomZone();
 	}
 
     protected void infiniteProceduralGeneration() {
