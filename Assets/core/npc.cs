@@ -47,14 +47,16 @@ public class npc : MonoBehaviour {
 
     protected void die(int dropAmount, string npcType) {
         Destroy(gameObject);
-        string[] gameObjResources = helpers.filterMetaFiles(Directory.GetFiles(Application.dataPath + "/Resources/npc/" + npcType + "/gameObjects"));
-        string randomGameObj = Path.GetFileNameWithoutExtension(gameObjResources[Random.Range(0, gameObjResources.Length)]);
-        GameObject itemToDrop = Resources.Load<GameObject>("npc/" + npcType + "/gameObjects/" + randomGameObj);
         for (int i = 0; i < dropAmount; i++) {
-            Instantiate(itemToDrop, transform.position, transform.rotation);
+            Instantiate(this.getRandomGameObj(npcType), transform.position, transform.rotation);
         }
     }
 
+    protected GameObject getRandomGameObj(string npcType) {
+        string[] gameObjResources = helpers.filterMetaFiles(Directory.GetFiles(Application.dataPath + "/Resources/npc/" + npcType + "/gameObjects"));
+        string randomGameObj = Path.GetFileNameWithoutExtension(gameObjResources[Random.Range(0, gameObjResources.Length)]);
+        return Resources.Load<GameObject>("npc/" + npcType + "/gameObjects/" + randomGameObj);
+    }
 	protected void selectCharacteristics(string npcType) {
 		string[] meshResources = helpers.filterMetaFiles(Directory.GetFiles(Application.dataPath + "/Resources/npc/" + npcType + "/meshes"));
 		string randomMesh = Path.GetFileNameWithoutExtension(meshResources[Random.Range(0, meshResources.Length)]);

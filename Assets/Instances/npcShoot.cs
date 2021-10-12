@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 class npcShoot : npc {
-
+    
+    public Transform firePos;
     private float health = 10;
 	private float speed = 10;
 	private Transform target;
     private string npcType = "npcShoot";
     private bool canShoot = true;
     private float shootRange = 10;
-
-    public GameObject associatedObj;
-    public Transform firePos;
+    private GameObject projectile; 
 
     private void Start() {
         selectCharacteristics(this.npcType);        
 		this.target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         InvokeRepeating("randomPos", 2f, 5f);
+        this.projectile = getRandomGameObj(this.npcType); 
     }
 
     private void Update() {
@@ -33,18 +33,16 @@ class npcShoot : npc {
     }
 
     private void powerShoot() {
-        float shootDelay = Random.Range(1, 5);
-        float shootPower = Random.Range(1000, 4000);
-        float distToPlayer = Vector3.Distance(target.position, transform.position);
+        float distToPlayer = Vector3.Distance(this.target.position, transform.position);
         if (distToPlayer <= shootRange) {
             if (this.canShoot) {
-                StartCoroutine(this.shootDelay(shootDelay, shootPower));
+                StartCoroutine(this.shootDelay(2, 5000));
             }
         }
     }
 
     private IEnumerator shootDelay(float shootDelay, float shootPower) {
-        GameObject projectile = Instantiate(associatedObj, firePos.position, firePos.rotation);
+        GameObject projectile = Instantiate(this.projectile, firePos.position, firePos.rotation);
         projectile.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * shootPower);
         canShoot = false;
         yield return new WaitForSeconds(shootDelay);

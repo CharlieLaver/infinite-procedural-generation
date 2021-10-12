@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &999328547527558532
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3680411066085055249}
-  m_Layer: 0
-  m_Name: firePos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3680411066085055249
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 999328547527558532}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 0.399, z: 0.94}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1172105981561211480}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1172105981561211481
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,11 +12,9 @@ GameObject:
   - component: {fileID: 1172105981561211485}
   - component: {fileID: 1172105981561211482}
   - component: {fileID: 5165063300782918976}
-  - component: {fileID: 1320882797159524910}
   - component: {fileID: 6618543015394895293}
   - component: {fileID: 4013396566019050302}
-  - component: {fileID: 5208355328720460903}
-  - component: {fileID: 3991772203155213461}
+  - component: {fileID: 1772964492908668842}
   m_Layer: 0
   m_Name: npcObj
   m_TagString: Untagged
@@ -64,8 +32,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 3680411066085055249}
+  m_Children: []
   m_Father: {fileID: 1172105982167189919}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -134,30 +101,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1320882797159524910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1172105981561211481}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fadd1f38181f83744a0eeaf0f0001a35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePos: {fileID: 3680411066085055249}
-  possibleObjArr:
-  - {fileID: 8768489124556868421, guid: 7e6a511cfd6c7da4098f90d3a023fd1f, type: 3}
-  - {fileID: 7112553609321472585, guid: f2421edf82ac5074ea7f0202bdfde429, type: 3}
-  meshes:
-  - {fileID: 4300000, guid: d7ad634caa1c049d49b730cc6d29c683, type: 3}
-  - {fileID: 4300000, guid: 1e50ef3048667495d90210b70c070c6b, type: 3}
-  - {fileID: 4300000, guid: 186ad8f063dbf430da4d56ebc0cb14e0, type: 3}
-  materials:
-  - {fileID: 2100000, guid: 9418a5fcbafe84543998bd7c831a9ee1, type: 2}
-  - {fileID: 2100000, guid: 4f5f071a5fbbf7c49a0e879cff010929, type: 2}
-  - {fileID: 2100000, guid: 7443e746634ee474b8a2748d8fb7250e, type: 2}
 --- !u!114 &6618543015394895293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +127,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &5208355328720460903
+--- !u!114 &1772964492908668842
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,20 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d7857bf5ff8fa193a33906a7ea98d01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3991772203155213461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1172105981561211481}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7adf6c294c1a8fb2d8c886e8e8e5d65f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  associatedObj: {fileID: 8768489124556868421, guid: 7e6a511cfd6c7da4098f90d3a023fd1f, type: 3}
-  firePos: {fileID: 3680411066085055249}
 --- !u!1 &1172105982167189915
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +153,7 @@ GameObject:
   - component: {fileID: 1172105982167189914}
   - component: {fileID: 3753878514093358272}
   m_Layer: 0
-  m_Name: npc
+  m_Name: npcCollect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
