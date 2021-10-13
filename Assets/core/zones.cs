@@ -7,26 +7,29 @@ using System.IO;
 class zones : MonoBehaviour {
 
 	private string[] allZones;
-	private GameObject[] zone;
+	private string selectedZone;
 
 	public void getAllZones() {
 		this.allZones = Directory.GetDirectories(Application.dataPath + "/Resources/world");
 	}
 	
 	public void randomZone() {
-		string selectedZone = Path.GetFileNameWithoutExtension(this.allZones[UnityEngine.Random.Range(0, this.allZones.Length)]);
-		string[] zoneResources = helpers.filterMetaFiles(Directory.GetFiles(Application.dataPath + "/Resources/world/" + selectedZone));
-		List<GameObject> randomBlocks = new List<GameObject>();
-		for(int i = 0; i < zoneResources.Length; i++) {
-			string randomBlockName = Path.GetFileNameWithoutExtension(zoneResources[UnityEngine.Random.Range(0, zoneResources.Length)]);
-			GameObject randomGameObj = Resources.Load<GameObject>("world/" + selectedZone + "/" + randomBlockName);
-			randomBlocks.Add(randomGameObj);
-		}
-		this.zone = randomBlocks.ToArray();
+		this.selectedZone = Path.GetFileNameWithoutExtension(this.allZones[UnityEngine.Random.Range(0, this.allZones.Length)]);
 	}
 
 	public GameObject selectBlock() {
-		return this.zone[UnityEngine.Random.Range(0, this.zone.Length)];
+		string blockType = "common";
+		int conditionalIndex = UnityEngine.Random.Range(0, 1000);
+		if(conditionalIndex > 0 && conditionalIndex < 900) {
+			blockType = "common";
+		} else if(conditionalIndex > 900 && conditionalIndex < 998) {
+			blockType = "infrequent";
+		} else if(conditionalIndex > 998 && conditionalIndex < 1000) {
+			blockType = "rare";
+		}
+		string[] blocks = helpers.filterMetaFiles(Directory.GetFiles(Application.dataPath + "/Resources/world/" + this.selectedZone + "/" + blockType));
+		string randomBlock = Path.GetFileNameWithoutExtension(blocks[UnityEngine.Random.Range(0, blocks.Length)]);
+		return Resources.Load<GameObject>("world/" + this.selectedZone + "/" + blockType + "/" + randomBlock);
 	}
 
 }
