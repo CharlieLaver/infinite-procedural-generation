@@ -3,24 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /* add script to every prefab -> destroys the gameObj is too far away from player */
-public class destroyGameObj : MonoBehaviour
-{
+public class destroyGameObj : MonoBehaviour {
     private Transform target;
     private float dist;
     private float howclose = 80f;
 
-    void Start()
-    {
+    void Start() {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
-    void Update()
-    {
+    void Update() {
         dist = Vector3.Distance(target.position, transform.position);
-
-        if (dist > howclose)
-        {
-            worldController.blockContainer.Remove(transform.position);
+        if (dist > howclose) {
+            proceduralGeneration.blockContainer.Remove(transform.position);
             Destroy(gameObject);
         }
 
