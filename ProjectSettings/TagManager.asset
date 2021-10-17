@@ -7,6 +7,7 @@ TagManager:
   - build_block
   - zone1_block1
   - backpack
+  - firePos
   layers:
   - Default
   - TransparentFX

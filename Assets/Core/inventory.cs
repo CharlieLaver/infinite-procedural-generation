@@ -5,8 +5,13 @@ using UnityEngine.UI;
 
 public class inventory : MonoBehaviour {
     
-    protected List<string> collectedObjects = new List<string>();
+    public static int projectiles;
     private RaycastHit hit;
+    private Text projectileCount;
+
+    protected void projectileCountUI() {
+        projectileCount = GameObject.Find("projectileCountUI").GetComponent<Text>();
+    }
 
     protected void pickUp() {
         if (Input.GetMouseButtonDown(1)) {
@@ -16,11 +21,12 @@ public class inventory : MonoBehaviour {
                 if (bc != null && bc.gameObject.GetComponent<Rigidbody>() != null) {
                     float dist = Vector3.Distance(transform.position, bc.gameObject.transform.position);
                     if (dist <= 10) {
-                        collectedObjects.Add(bc.gameObject.name);
+                        inventory.projectiles++;
                         Destroy(bc.gameObject);
                     }
                 }
             }
+            projectileCount.text = inventory.projectiles.ToString();
         }
     }
 }

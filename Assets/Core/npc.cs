@@ -57,6 +57,7 @@ public class npc : MonoBehaviour {
         string randomGameObj = Path.GetFileNameWithoutExtension(gameObjResources[Random.Range(0, gameObjResources.Length)]);
         return Resources.Load<GameObject>("npc/" + npcType + "/gameObjects/" + randomGameObj);
     }
+    
 	protected void selectCharacteristics(string npcType) {
 		string[] meshResources = helpers.filterMetaFiles(Directory.GetFiles(Application.dataPath + "/Resources/npc/" + npcType + "/meshes"));
 		string randomMesh = Path.GetFileNameWithoutExtension(meshResources[Random.Range(0, meshResources.Length)]);
