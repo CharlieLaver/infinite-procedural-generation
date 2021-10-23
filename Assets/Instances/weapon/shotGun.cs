@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class shotgun : weapon {
+public class shotGun : weapon {
 
-    private string weaponName = "shotgun";
+    private string weaponName = "shotGun";
     private float weaponPower = 4000;
     private float fireRate = 1;
 

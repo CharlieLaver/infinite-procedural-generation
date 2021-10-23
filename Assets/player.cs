@@ -7,7 +7,7 @@ public class player : inventory {
 
     private void Start(){
         projectileCountUI();
-        gameObject.AddComponent<shotgun>();
+        gameObject.AddComponent<sniperGun>();
     }
 
     private void Update() {
