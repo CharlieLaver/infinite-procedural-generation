@@ -5,7 +5,7 @@ using UnityEngine;
 public class sniperGun : weapon {
 
     private string weaponName = "sniperGun";
-    private float weaponPower = 8000;
+    private float weaponPower = 7000;
     private float fireRate = 5;
 
     private void Start() {
