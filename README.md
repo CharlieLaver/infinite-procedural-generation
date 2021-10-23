@@ -2,9 +2,6 @@
 
 TODO:
 
-- controller input
+- controller input (ps4 & xbox)
 - weapon pickup / drop functionality
 - weapon switching
-
-
-
