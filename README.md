@@ -2,6 +2,6 @@
 
 TODO:
 
-- controller input (ps4 & xbox)
 - weapon pickup / drop functionality
 - weapon switching
+- npc loot dropping
