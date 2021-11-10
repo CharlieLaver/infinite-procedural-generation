@@ -21,38 +21,40 @@ public class weaponHolder : MonoBehaviour {
     // }
 
     public void weaponSwitch() {
-        if(Input.GetKeyDown(KeyCode.Keypad1)) {
+        if(Input.GetKeyDown(KeyCode.F1)) {
+            Debug.Log("keypad1");
             changeWeaponScript(0);
-        } else if(Input.GetKeyDown(KeyCode.Keypad2)) {
+        } else if(Input.GetKeyDown(KeyCode.F2)) {
             if(weaponInventory.ElementAtOrDefault(1) != null) {
                 changeWeaponScript(1);
             }
-        } else if(Input.GetKeyDown(KeyCode.Keypad3)) {
+        } else if(Input.GetKeyDown(KeyCode.F3)) {
             if(weaponInventory.ElementAtOrDefault(2) != null) {
                 changeWeaponScript(2);
             }
-        } else if(Input.GetKeyDown(KeyCode.Keypad4)) {
+        } else if(Input.GetKeyDown(KeyCode.F4)) {
             if(weaponInventory.ElementAtOrDefault(3) != null) {
                 changeWeaponScript(3);
             }
-        } else if(Input.GetKeyDown(KeyCode.Keypad5)) {
+        } else if(Input.GetKeyDown(KeyCode.F5)) {
             if(weaponInventory.ElementAtOrDefault(4) != null) {
                 changeWeaponScript(4);
             }
         }
     }
 
-
     private void changeWeaponScript(int weaponIndex) {
         if(weaponInventory.ElementAtOrDefault(weaponIndex) != null) {
             for(int i = 0; i < weaponInventory.Count; i++) {
                 if(weaponInventory[i] != weaponInventory[weaponIndex]) {
                     if(weaponInventory[i] != null) {
-                       (GetComponent(weaponInventory[i]) as MonoBehaviour).enabled = false;
+                        Debug.Log("disable " + weaponInventory[i]);
+                    //    (GetComponent(weaponInventory[i]) as MonoBehaviour).enabled = false;
                     }
                 } 
             }
-            (GetComponent(weaponInventory[weaponIndex]) as MonoBehaviour).enabled = false;
+            Debug.Log("enable " + weaponInventory[weaponIndex]);
+            // (GetComponent(weaponInventory[weaponIndex]) as MonoBehaviour).enabled = false;
         }
     }
 
