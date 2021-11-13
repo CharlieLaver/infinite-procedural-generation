@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class weaponHolder : MonoBehaviour {
     
@@ -43,19 +44,22 @@ public class weaponHolder : MonoBehaviour {
         }
     }
 
-    private void changeWeaponScript(int weaponIndex) {
-        if(weaponInventory.ElementAtOrDefault(weaponIndex) != null) {
-            for(int i = 0; i < weaponInventory.Count; i++) {
-                if(weaponInventory[i] != weaponInventory[weaponIndex]) {
-                    if(weaponInventory[i] != null) {
-                        Debug.Log("disable " + weaponInventory[i]);
-                    //    (GetComponent(weaponInventory[i]) as MonoBehaviour).enabled = false;
-                    }
-                } 
-            }
-            Debug.Log("enable " + weaponInventory[weaponIndex]);
-            // (GetComponent(weaponInventory[weaponIndex]) as MonoBehaviour).enabled = false;
+// https://stackoverflow.com/questions/69953974/dynamically-enablaling-disabaling-a-gameobjects-script-component-based-on-a-st
+private void changeWeaponScript(int weaponIndex) {
+    if(weaponInventory.ElementAtOrDefault(weaponIndex) != null) {
+        for(int i = 0; i < weaponInventory.Count; i++) {
+            if(weaponInventory[i] != weaponInventory[weaponIndex]) {
+                if(weaponInventory[i] != null) {
+                    Debug.Log("disable " + weaponInventory[i]);
+                    (GetComponent(weaponInventory[weaponIndex]) as MonoBehaviour).enabled = false;
+                    // Type weaponClass = Type.GetType(weaponInventory[i]);
+                    // gameObject.GetComponent(weaponClass).enabled = false;
+                }
+            } 
         }
+        Debug.Log("enable " + weaponInventory[weaponIndex]);
+        (GetComponent(weaponInventory[weaponIndex]) as MonoBehaviour).enabled = true;
     }
+}
 
 }
