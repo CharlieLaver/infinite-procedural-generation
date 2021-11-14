@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class inventory : MonoBehaviour {
+public class inventory : weapon {
 
     public static int projectiles;
-    protected weaponHolder weaponHolder = new weaponHolder();   
     private RaycastHit hit;
     private Text projectileCount;
 
