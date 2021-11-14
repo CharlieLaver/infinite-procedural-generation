@@ -12,6 +12,7 @@ public class player : inventory {
     private void Update() {
         pickUp();
         changeWeapon();
+        shoot();
     }
 
 }

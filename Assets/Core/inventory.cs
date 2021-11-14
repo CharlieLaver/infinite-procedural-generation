@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class inventory : weapon {
 
-    public static int projectiles;
+    public static int projectiles = 100;
     private RaycastHit hit;
     private Text projectileCount;
 

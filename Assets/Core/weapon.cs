@@ -6,9 +6,9 @@ using System.IO;
 public class weapon : MonoBehaviour {
     
     protected Transform firePos;
+	private GameObject projectile;
     private float weaponPower;
     private float shootDelay;
-    private GameObject projectile; 
     private bool canShoot = true;
 
     protected void getFirePos() {
@@ -21,21 +21,23 @@ public class weapon : MonoBehaviour {
         }
     }
 
-    protected IEnumerator fireRate() {        
+	protected void changeWeapon() {
+        if(Input.GetKeyDown(KeyCode.F1)) {
+            this.weaponPower = Random.Range(1000, 9000);
+            this.shootDelay = Random.Range(1, 20);
+            this.projectile = this.selectProjectile();
+        }
+    }
+
+	// doesn't currenlty work TODO
+    protected IEnumerator fireRate() {
+		Debug.Log(this.projectile);
         GameObject shot = Instantiate(this.projectile, this.firePos.position, this.firePos.rotation);
         shot.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * this.weaponPower);
         inventory.projectiles--;
         this.canShoot = false;
         yield return new WaitForSeconds(this.shootDelay);
         this.canShoot = true;
-    }
-
-    protected void changeWeapon() {
-        if(Input.GetKeyDown(KeyCode.F1)) {
-            this.weaponPower = Random.Range(1000, 9000);
-            this.shootDelay = Random.Range(1, 20);
-            this.projectile = this.selectProjectile();
-        }
     }
 
     private GameObject selectProjectile() {
