@@ -2,7 +2,5 @@
 
 TODO:
 
-- weapon switching
-    - - changeWeaponScript() in weaponHolder
-- weapon pickup / drop functionality
-- npc loot dropping
+- npc health bar
+- npc loot dropping (egg that contains the data for that procedual generated npc)

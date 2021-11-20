@@ -7,6 +7,8 @@ public class player : inventory {
 
     private void Start(){
         projectileCountUI();
+        getFirePos();
+        projectile = selectProjectile(); 
     }
 
     private void Update() {
@@ -14,5 +16,4 @@ public class player : inventory {
         changeWeapon();
         shoot();
     }
-
 }

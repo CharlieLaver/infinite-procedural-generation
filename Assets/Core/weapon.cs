@@ -6,9 +6,9 @@ using System.IO;
 public class weapon : MonoBehaviour {
     
     protected Transform firePos;
-	private GameObject projectile;
-    private float weaponPower;
-    private float shootDelay;
+	protected GameObject projectile;
+    private float weaponPower = 8000;
+    private float shootDelay = 3;
     private bool canShoot = true;
 
     protected void getFirePos() {
@@ -23,15 +23,13 @@ public class weapon : MonoBehaviour {
 
 	protected void changeWeapon() {
         if(Input.GetKeyDown(KeyCode.F1)) {
-            this.weaponPower = Random.Range(1000, 9000);
-            this.shootDelay = Random.Range(1, 20);
+            // this.weaponPower = Random.Range(1000, 9000);
+            // this.shootDelay = Random.Range(1, 20);
             this.projectile = this.selectProjectile();
         }
     }
 
-	// doesn't currenlty work TODO
     protected IEnumerator fireRate() {
-		Debug.Log(this.projectile);
         GameObject shot = Instantiate(this.projectile, this.firePos.position, this.firePos.rotation);
         shot.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * this.weaponPower);
         inventory.projectiles--;
@@ -40,7 +38,7 @@ public class weapon : MonoBehaviour {
         this.canShoot = true;
     }
 
-    private GameObject selectProjectile() {
+    protected GameObject selectProjectile() {
 		string[] projectileResources = helpers.filterMetaFiles(Directory.GetFiles(Application.dataPath + "/Resources/inventory/projectiles/"));
         string randomProjectile = Path.GetFileNameWithoutExtension(projectileResources[Random.Range(0, projectileResources.Length)]);
         GameObject projectileRes = Resources.Load<GameObject>("inventory/projectiles/" + randomProjectile);
