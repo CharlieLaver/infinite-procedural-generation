@@ -1,6 +1,8 @@
-# unity-sandbox
+# Procedural Generation Sandbox
 
-TODO:
+## Controlls
 
-- npc health bar
-- npc loot dropping (egg that contains the data for that procedual generated npc)
+### PC
+
+F1 - Switch weapon (weapon mesh, powershot delay & projectile is all selected randomly)
+
