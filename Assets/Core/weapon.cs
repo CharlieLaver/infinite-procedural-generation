@@ -18,6 +18,8 @@ public class weapon : MonoBehaviour {
     protected void shoot() {
         if(Input.GetMouseButton(0) && this.canShoot && inventory.projectiles > 0) {
             StartCoroutine(fireRate());
+            inventory.projectiles--;
+            inventory.projectileCount.text = inventory.projectiles.ToString();
         }
     }
 
@@ -32,7 +34,6 @@ public class weapon : MonoBehaviour {
     protected IEnumerator fireRate() {
         GameObject shot = Instantiate(this.projectile, this.firePos.position, this.firePos.rotation);
         shot.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * this.weaponPower);
-        inventory.projectiles--;
         this.canShoot = false;
         yield return new WaitForSeconds(this.shootDelay);
         this.canShoot = true;

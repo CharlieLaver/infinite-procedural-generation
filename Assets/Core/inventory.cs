@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class inventory : weapon {
 
     public static int projectiles = 100;
+    public static Text projectileCount;
     private RaycastHit hit;
-    private Text projectileCount;
 
     protected void projectileCountUI() {
         projectileCount = GameObject.Find("projectileCountUI").GetComponent<Text>();
+        projectileCount.text = inventory.projectiles.ToString();
     }
 
     protected void pickUp() {
