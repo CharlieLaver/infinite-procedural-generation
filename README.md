@@ -1,6 +1,6 @@
 # Procedural Generation Sandbox
 
-An infinately procedual generated sandbox enviroment build in the Unity engine. The world is built up from 1x1 cubes that parent meshes that are to be randomly instantiated in the world.
+An infinately procedual generated sandbox enviroment build in the Unity engine. The world is built up from 1x1 cubes that parent meshes that are to be randomly instantiated in the world. PLease note that this will only work in the Unity runtime enviroment.
 
 ## Resources
 
