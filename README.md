@@ -26,10 +26,3 @@ The zone class found at Assets/Core/zone.cs randomly selects a zone dir from thi
 * /common - GameObjects that are most common in the zone.
 * /infrequent - GameObjects that are found infrequently in the zone.
 * /rare - GameObjects that are rare in the zone (npc blocks etc). 
-
-## Controlls
-
-### PC
-
-* F1 - Switch weapon (weapon mesh, powershot delay & projectile is all selected randomly)
-
