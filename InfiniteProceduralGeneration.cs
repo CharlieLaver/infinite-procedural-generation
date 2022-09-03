@@ -15,7 +15,7 @@ class InfiniteProceduralGeneration : MonoBehaviour {
 	}
 	
 	public GameObject player;
-	public int worldSize = 40;
+	public int worldSize = 20;
 	public Zone[] zones;
 	
 	public static Hashtable blockContainer = new Hashtable();
