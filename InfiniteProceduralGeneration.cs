@@ -15,6 +15,7 @@ class InfiniteProceduralGeneration : MonoBehaviour {
 	}
 	
 	public GameObject player;
+	public static Transform playerPos;
 	public int worldSize = 20;
 	public Zone[] zones;
 	
@@ -27,6 +28,7 @@ class InfiniteProceduralGeneration : MonoBehaviour {
 	private void Start() {
 		this.SelectZone();
 		startPos = player.transform.position;
+		playerPos = player.GetComponent<Transform>();
 	}
 	
 	private void Update() {
@@ -36,6 +38,7 @@ class InfiniteProceduralGeneration : MonoBehaviour {
 				Vector3 pos = new Vector3(x * 1 + this.XPlayerLocation, this.GenerateNoise(x + this.XPlayerLocation, z + ZPlayerLocation, 8f) * this.selectedZone.noiseHeight, z * 1 + this.ZPlayerLocation);
 				if(!blockContainer.ContainsKey(pos)) {
 					GameObject block = Instantiate(this.SelectBlock(), pos, Quaternion.identity) as GameObject;
+					block.AddComponent<DestroyBlock>();
 					blockContainer.Add(pos, block);
 					blockPositions.Add(block.transform.position);
 					block.transform.SetParent(this.transform);
