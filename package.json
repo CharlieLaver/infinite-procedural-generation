@@ -1,0 +1,15 @@
+{
+	"name": "com.charlielaver.infinite-procedural-generation",
+	"version": "1.0.0",
+	"displayName": "Infinite Procedural Generation",
+	"description": "A Unity package for 3D infinite procedural generation",
+	"unity": "2019.1",
+	"dependencies": {
+	},
+	"keywords": ["terrain", "procedural-generation", "library"],
+	"author": {
+		"name": "Charlie Laver",
+		"email": "charlielaver7@gmail.com",
+		"url": "https://github.com/CharlieLaver"
+	}
+}
